@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Container, Heading, Center } from "@chakra-ui/react";
 import SearchBar from "./components/SearchBar";
 import MoviesContainer from "./components/MoviesContainer";
 import MainTitle from "./components/MainTitle";
