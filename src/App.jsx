@@ -17,7 +17,7 @@ const App = () => {
     searchMovie();
     setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 200);
   }, []);
 
   async function searchMovie(title) {
