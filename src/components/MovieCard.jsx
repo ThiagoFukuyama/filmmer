@@ -47,7 +47,7 @@ const MovieCard = ({ movie: { Title, Year, Poster, Type } }) => {
                 {Title}
               </Heading>
 
-              <Text>{Year}</Text>
+              <Text color={"gray.400"}>{Year}</Text>
 
               <Text
                 as={"b"}
@@ -57,7 +57,6 @@ const MovieCard = ({ movie: { Title, Year, Poster, Type } }) => {
                 p={1.5}
                 pt={1}
                 borderRadius={"md"}
-                fontWeight={""}
               >
                 {Type}
               </Text>
