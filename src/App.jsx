@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import useDebounce from "./hooks/useDebounce";
 import SearchBar from "./components/SearchBar";
 import MoviesContainer from "./components/MoviesContainer";
 import MainTitle from "./components/MainTitle";
@@ -20,21 +21,21 @@ const App = () => {
     }, 200);
   }, []);
 
-  async function searchMovie(title) {
+  const searchMovie = useCallback(async (title) => {
     const search = title || DEFAULT_SEARCH_QUERY;
     const response = await fetch(`${API_URL}&s=${search}`);
     const data = await response.json();
     setMovies(data.Search);
-  }
+  }, []);
 
-  function handleOnChange(e) {
+  const debouncedSearchMovie = useMemo(() => {
+    return useDebounce(searchMovie, 1000);
+  }, [searchMovie]);
+
+  const handleOnChange = (e) => {
     setSearchQuery(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    searchMovie(searchQuery);
-  }
+    debouncedSearchMovie(e.target.value);
+  };
 
   return (
     <>
@@ -43,11 +44,7 @@ const App = () => {
       ) : (
         <>
           <MainTitle text={"Filmmer"} />
-          <SearchBar
-            value={searchQuery}
-            onChange={handleOnChange}
-            onSubmit={handleSubmit}
-          />
+          <SearchBar value={searchQuery} onChange={handleOnChange} />
           <MoviesContainer movies={movies} />
         </>
       )}
