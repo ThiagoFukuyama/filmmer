@@ -28,7 +28,8 @@ const SearchBar = ({ value, onChange }) => {
         />
 
         <InputLeftElement
-          children={<SearchIcon fontSize={"1.45rem"} color={"#DD4849 "} />}
+          children={<SearchIcon fontSize={"1.35rem"} color={"#DD4849 "} />}
+          pointerEvents={"none"}
           mt={1.5}
           ml={2}
         />
