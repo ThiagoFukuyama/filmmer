@@ -26,10 +26,11 @@ const App = () => {
     const response = await fetch(`${API_URL}&s=${search}`);
     const data = await response.json();
     setMovies(data.Search);
+    console.log(title);
   }, []);
 
   const debouncedSearchMovie = useMemo(() => {
-    return useDebounce(searchMovie, 1000);
+    return useDebounce(searchMovie, 750);
   }, [searchMovie]);
 
   const handleOnChange = (e) => {
