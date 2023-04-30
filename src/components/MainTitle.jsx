@@ -1,6 +1,6 @@
 import { Center, Heading } from "@chakra-ui/react";
 
-const MainTitle = ({ text }) => {
+const MainTitle = ({ children }) => {
   return (
     <Center>
       <Heading
@@ -12,7 +12,7 @@ const MainTitle = ({ text }) => {
         p={10}
         mt={[1, 10]}
       >
-        {text}
+        {children}
       </Heading>
     </Center>
   );

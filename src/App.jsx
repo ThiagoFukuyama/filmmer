@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { Heading, Center } from "@chakra-ui/react";
 import useDebounce from "./hooks/useDebounce";
 import SearchBar from "./components/SearchBar";
 import MoviesContainer from "./components/MoviesContainer";
@@ -12,24 +13,31 @@ const App = () => {
 
   const [movies, setMovies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     searchMovie();
-    setTimeout(() => {
-      setLoading(false);
-    }, 200);
   }, []);
 
   const searchMovie = useCallback(async (title) => {
     const search = title || DEFAULT_SEARCH_QUERY;
-    const response = await fetch(`${API_URL}&s=${search}`);
-    const data = await response.json();
-    setMovies(data.Search);
+    try {
+      const response = await fetch(`${API_URL}&s=${search}`);
+      if (!response.ok) {
+        throw new Error();
+      }
+      const data = await response.json();
+      setMovies(data.Search);
+    } catch (e) {
+      setError("Sorry, something went wrong. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   const debouncedSearchMovie = useMemo(() => {
-    return useDebounce(searchMovie, 750);
+    return useDebounce(searchMovie, 500);
   }, [searchMovie]);
 
   const handleOnChange = (e) => {
@@ -39,15 +47,18 @@ const App = () => {
 
   return (
     <>
-      {loading ? (
-        <LoadingScreen />
-      ) : (
-        <>
-          <MainTitle text={"Filmmer"} />
-          <SearchBar value={searchQuery} onChange={handleOnChange} />
+      <MainTitle>Filmmer</MainTitle>
+      <SearchBar value={searchQuery} onChange={handleOnChange} />
+
+      {isLoading && <LoadingScreen />}
+
+      <Center maxW={"container.2xl"} mt={10} p={10}>
+        {error ? (
+          <Heading>{error}</Heading>
+        ) : (
           <MoviesContainer movies={movies} />
-        </>
-      )}
+        )}
+      </Center>
     </>
   );
 };
