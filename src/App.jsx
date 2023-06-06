@@ -7,60 +7,59 @@ import MainTitle from "./components/MainTitle";
 import LoadingScreen from "./components/LoadingScreen";
 
 const App = () => {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const API_URL = `https://www.omdbapi.com?apikey=${API_KEY}`;
-  const DEFAULT_SEARCH_QUERY = "Sword";
+    const API_URL = `https://www.omdbapi.com?apikey=5dfc069`;
+    const DEFAULT_SEARCH_QUERY = "Sword";
 
-  const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+    const [movies, setMovies] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    searchMovie();
-  }, []);
+    useEffect(() => {
+        searchMovie();
+    }, []);
 
-  const searchMovie = useCallback(async (title) => {
-    const search = title || DEFAULT_SEARCH_QUERY;
-    try {
-      const response = await fetch(`${API_URL}&s=${search}`);
-      if (!response.ok) {
-        throw new Error();
-      }
-      const data = await response.json();
-      setMovies(data.Search);
-    } catch (e) {
-      setError("Sorry, something went wrong. Please try again later.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
+    const searchMovie = useCallback(async (title) => {
+        const search = title || DEFAULT_SEARCH_QUERY;
+        try {
+            const response = await fetch(`${API_URL}&s=${search}`);
+            if (!response.ok) {
+                throw new Error();
+            }
+            const data = await response.json();
+            setMovies(data.Search);
+        } catch (e) {
+            setError("Sorry, something went wrong. Please try again later.");
+        } finally {
+            setIsLoading(false);
+        }
+    }, []);
 
-  const debouncedSearchMovie = useMemo(() => {
-    return useDebounce(searchMovie, 500);
-  }, [searchMovie]);
+    const debouncedSearchMovie = useMemo(() => {
+        return useDebounce(searchMovie, 500);
+    }, [searchMovie]);
 
-  const handleOnChange = (e) => {
-    setSearchQuery(e.target.value);
-    debouncedSearchMovie(e.target.value);
-  };
+    const handleOnChange = (e) => {
+        setSearchQuery(e.target.value);
+        debouncedSearchMovie(e.target.value);
+    };
 
-  return (
-    <>
-      <MainTitle>Filmmer</MainTitle>
-      <SearchBar value={searchQuery} onChange={handleOnChange} />
+    return (
+        <>
+            <MainTitle>Filmmer</MainTitle>
+            <SearchBar value={searchQuery} onChange={handleOnChange} />
 
-      {isLoading && <LoadingScreen />}
+            {isLoading && <LoadingScreen />}
 
-      <Center maxW={"container.2xl"} mt={10} p={10}>
-        {error ? (
-          <Heading>{error}</Heading>
-        ) : (
-          <MoviesContainer movies={movies} />
-        )}
-      </Center>
-    </>
-  );
+            <Center maxW={"container.2xl"} mt={10} p={10}>
+                {error ? (
+                    <Heading>{error}</Heading>
+                ) : (
+                    <MoviesContainer movies={movies} />
+                )}
+            </Center>
+        </>
+    );
 };
 
 export default App;
