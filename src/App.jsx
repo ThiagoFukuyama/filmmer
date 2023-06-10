@@ -13,7 +13,7 @@ const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         searchMovie();
@@ -29,14 +29,14 @@ const App = () => {
             const data = await response.json();
             setMovies(data.Search);
         } catch (e) {
-            setError("Sorry, something went wrong. Please try again later.");
+            setError(true);
         } finally {
             setIsLoading(false);
         }
     }, []);
 
     const debouncedSearchMovie = useMemo(() => {
-        return useDebounce(searchMovie, 500);
+        return useDebounce(searchMovie);
     }, [searchMovie]);
 
     const handleOnChange = (e) => {
@@ -53,7 +53,9 @@ const App = () => {
 
             <Center maxW={"container.2xl"} mt={10} p={10}>
                 {error ? (
-                    <Heading>{error}</Heading>
+                    <Heading>
+                        Sorry, something went wrong. Please try again later.
+                    </Heading>
                 ) : (
                     <MoviesContainer movies={movies} />
                 )}
