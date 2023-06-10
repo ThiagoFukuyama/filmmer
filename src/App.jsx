@@ -1,6 +1,7 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
+import FavoritesProvider from "./context/FavoritesContext";
 
 const App = () => {
     return (
@@ -10,10 +11,12 @@ const App = () => {
             </Link>
             <Link to="/favorites">Favorites</Link>
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/favorites" element={<Favorites />} />
-            </Routes>
+            <FavoritesProvider>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/favorites" element={<Favorites />} />
+                </Routes>
+            </FavoritesProvider>
         </>
     );
 };
