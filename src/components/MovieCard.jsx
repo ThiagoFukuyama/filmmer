@@ -1,7 +1,9 @@
 import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
 import { useFavorites } from "../context/FavoritesContext";
 
-const MovieCard = ({ movie: { Title, Year, Poster, Type } }) => {
+const MovieCard = ({ movie: { imdbID, Title, Year, Poster, Type } }) => {
+    const { favorites, addFavorite, removeFavorite } = useFavorites();
+
     let typeColor;
     switch (Type) {
         case "movie":
@@ -65,6 +67,31 @@ const MovieCard = ({ movie: { Title, Year, Poster, Type } }) => {
                             >
                                 {Type}
                             </Text>
+                            {favorites.some(
+                                (item) => item.imdbID === imdbID
+                            ) ? (
+                                <button
+                                    type="button"
+                                    onClick={() => removeFavorite(imdbID)}
+                                >
+                                    Remover
+                                </button>
+                            ) : (
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        addFavorite({
+                                            imdbID,
+                                            Title,
+                                            Year,
+                                            Poster,
+                                            Type,
+                                        })
+                                    }
+                                >
+                                    Adicionar
+                                </button>
+                            )}
                         </Stack>
                     </CardBody>
                 </Stack>
