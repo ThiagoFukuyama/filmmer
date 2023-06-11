@@ -11,9 +11,7 @@ const FavoritesProvider = ({ children }) => {
     const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
     const addFavorite = (item) => {
-        setFavorites((prevFavorites) => {
-            return [...prevFavorites, item];
-        });
+        setFavorites((prevFavorites) => [...prevFavorites, item]);
     };
 
     const removeFavorite = (imdbID) => {
