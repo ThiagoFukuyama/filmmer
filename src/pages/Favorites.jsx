@@ -1,4 +1,3 @@
-import { Heading, Container } from "@chakra-ui/react";
 import MoviesContainer from "../components/MoviesContainer";
 import { useFavorites } from "../context/FavoritesContext";
 
@@ -6,10 +5,10 @@ const Favorites = () => {
     const { favorites } = useFavorites();
 
     return (
-        <Container maxW={"container.2xl"}>
-            <Heading>My Favorites</Heading>
+        <div>
+            <h1>My Favorites</h1>
             <MoviesContainer movies={favorites} />
-        </Container>
+        </div>
     );
 };
 

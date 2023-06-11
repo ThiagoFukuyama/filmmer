@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Heading, Center } from "@chakra-ui/react";
 import useDebounce from "../hooks/useDebounce";
 import SearchBar from "../components/SearchBar";
 import MoviesContainer from "../components/MoviesContainer";
@@ -51,15 +50,15 @@ const Home = () => {
 
             {isLoading && <LoadingScreen />}
 
-            <Center maxW={"container.2xl"} mt={10} p={10}>
+            <div>
                 {error ? (
-                    <Heading>
+                    <h1>
                         Sorry, something went wrong. Please try again later.
-                    </Heading>
+                    </h1>
                 ) : (
                     <MoviesContainer movies={movies} />
                 )}
-            </Center>
+            </div>
         </>
     );
 };

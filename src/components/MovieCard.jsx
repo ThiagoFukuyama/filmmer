@@ -1,4 +1,3 @@
-import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
 import { useFavorites } from "../context/FavoritesContext";
 
 const MovieCard = ({ movie: { imdbID, Title, Year, Poster, Type } }) => {
@@ -25,48 +24,22 @@ const MovieCard = ({ movie: { imdbID, Title, Year, Poster, Type } }) => {
 
     return (
         <>
-            <Card
-                w={"300px"}
-                minH={"500px"}
-                bgColor={"#1B1B1B"}
-                overflow={"hidden"}
-                transition={"250ms"}
-                _hover={{
-                    boxShadow: "0 5px 20px #DD484A80",
-                    transform: "scale(1.025)",
-                }}
-            >
-                <Stack>
-                    <Image
+            <div>
+                <div>
+                    <img
                         src={
                             Poster !== "N/A"
                                 ? Poster
                                 : "https://via.placeholder.com/400"
                         }
-                        boxSize={"100%"}
-                        objectFit={"cover"}
-                        h={"300px"}
-                        alt={`${Title} - poster`}
                     />
-                    <CardBody>
-                        <Stack spacing={3}>
-                            <Heading as={"h2"} size={"md"}>
-                                {Title}
-                            </Heading>
+                    <div>
+                        <div>
+                            <h2>{Title}</h2>
 
-                            <Text color={"gray.400"}>{Year}</Text>
+                            <p>{Year}</p>
 
-                            <Text
-                                as={"b"}
-                                fontSize={"sm"}
-                                bgColor={typeColor}
-                                w={"fit-content"}
-                                p={1.5}
-                                pt={1}
-                                borderRadius={"md"}
-                            >
-                                {Type}
-                            </Text>
+                            <p>{Type}</p>
                             {favorites.some(
                                 (item) => item.imdbID === imdbID
                             ) ? (
@@ -92,10 +65,10 @@ const MovieCard = ({ movie: { imdbID, Title, Year, Poster, Type } }) => {
                                     Adicionar
                                 </button>
                             )}
-                        </Stack>
-                    </CardBody>
-                </Stack>
-            </Card>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

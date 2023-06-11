@@ -1,15 +1,14 @@
-import { Flex, Heading } from "@chakra-ui/react";
 import MovieCard from "./MovieCard";
 
 const MoviesContainer = ({ movies }) => {
     return movies?.length > 0 ? (
-        <Flex flexWrap={"wrap"} justifyContent={"center"} gap={"2rem"}>
+        <div>
             {movies.map((movie) => {
                 return <MovieCard key={movie.imdbID} movie={movie} />;
             })}
-        </Flex>
+        </div>
     ) : (
-        <Heading>No results found</Heading>
+        <h1>No results found</h1>
     );
 };
 
