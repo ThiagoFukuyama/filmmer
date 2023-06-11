@@ -12,11 +12,7 @@ const FavoritesProvider = ({ children }) => {
 
     const addFavorite = (item) => {
         setFavorites((prevFavorites) => {
-            return [...prevFavorites, item].filter((value, index, self) => {
-                return (
-                    index === self.findIndex((t) => t.imdbID === value.imdbID)
-                );
-            });
+            return [...prevFavorites, item];
         });
     };
 
