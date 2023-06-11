@@ -1,5 +1,3 @@
-import { SearchIcon } from "@chakra-ui/icons";
-
 const SearchBar = ({ value, onChange }) => {
     return (
         <div>
