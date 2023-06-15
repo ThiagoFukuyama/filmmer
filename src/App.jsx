@@ -10,7 +10,7 @@ const App = () => {
                 Home
             </Link>
             <Link to="/favorites">Favorites</Link>
-            <h1 className="text-red-700">TESTEEEE</h1>
+            <h1 className="text-red-500 text-lg">TESTEEEE</h1>
 
             <FavoritesProvider>
                 <Routes>
