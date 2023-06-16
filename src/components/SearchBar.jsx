@@ -10,7 +10,7 @@ const SearchBar = ({ value, onChange }) => {
             />
             <input
                 className="w-full bg-transparent outline-none pl-10 pr-5 py-3 placeholder:opacity-40"
-                type="search"
+                type="text"
                 placeholder="Search for movies, series and games..."
                 value={value}
                 onChange={onChange}
