@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { AiOutlineSearch, AiFillStar } from "react-icons/ai";
+import { AiOutlineSearch } from "react-icons/ai";
+import { IoHeart } from "react-icons/io5";
 
 const NavBar = () => {
     return (
@@ -14,8 +15,8 @@ const NavBar = () => {
                     <Link to="/">Search</Link>
                 </li>
                 <li className="flex items-center gap-2">
-                    <AiFillStar
-                        color="#FAFA48"
+                    <IoHeart
+                        color="#DD4849"
                         size={20}
                         style={{ display: "inline-block" }}
                     />

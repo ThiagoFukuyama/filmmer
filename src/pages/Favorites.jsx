@@ -1,4 +1,4 @@
-import { AiFillStar } from "react-icons/ai";
+import { IoHeart } from "react-icons/io5";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
 import MoviesContainer from "../components/MoviesContainer";
@@ -10,8 +10,8 @@ const Favorites = () => {
     return (
         <Container>
             <Heading className="text-center mt-10 mb-14">
-                <AiFillStar
-                    color="#FAFA48"
+                <IoHeart
+                    color="#DD4849"
                     style={{ display: "inline-block", marginBottom: "0.5rem" }}
                 />{" "}
                 My Favorites
