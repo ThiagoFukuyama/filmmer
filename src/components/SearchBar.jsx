@@ -9,7 +9,7 @@ const SearchBar = ({ value, onChange }) => {
                 color="#DD4849"
             />
             <input
-                className="w-full bg-transparent outline-none pl-10 pr-5 py-3 placeholder:opacity-40"
+                className="w-full bg-transparent outline-none pl-10 pr-3 py-3 placeholder:opacity-40"
                 type="text"
                 placeholder="Search for movies, series and games..."
                 value={value}

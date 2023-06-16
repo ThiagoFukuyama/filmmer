@@ -8,9 +8,6 @@ import MainTitle from "../components/MainTitle";
 import LoadingScreen from "../components/LoadingScreen";
 
 const Home = () => {
-    const API_URL = `https://www.omdbapi.com?apikey=5dfc069`;
-    const DEFAULT_SEARCH_QUERY = "Sword";
-
     const [movies, setMovies] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -21,9 +18,12 @@ const Home = () => {
     }, []);
 
     const searchMovie = useCallback(async (title = "") => {
+        const DEFAULT_SEARCH_QUERY = "Sword";
         const search = title || DEFAULT_SEARCH_QUERY;
         try {
-            const response = await fetch(`${API_URL}&s=${search}`);
+            const response = await fetch(
+                `https://www.omdbapi.com?apikey=5dfc069&s=${search}`
+            );
             if (!response.ok) {
                 throw new Error();
             }
