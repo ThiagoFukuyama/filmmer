@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 import Container from "../components/Container";
+import Heading from "../components/Heading";
 import SearchBar from "../components/SearchBar";
 import MoviesContainer from "../components/MoviesContainer";
 import MainTitle from "../components/MainTitle";
@@ -53,9 +54,9 @@ const Home = () => {
                 {isLoading && <LoadingScreen />}
 
                 {error ? (
-                    <h1 className="text-4xl font-bold text-center">
+                    <Heading className="text-center">
                         Sorry, something went wrong. Please try again later.
-                    </h1>
+                    </Heading>
                 ) : (
                     <MoviesContainer
                         movies={movies}

@@ -1,4 +1,5 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import FavoritesProvider from "./context/FavoritesContext";
@@ -6,11 +7,7 @@ import FavoritesProvider from "./context/FavoritesContext";
 const App = () => {
     return (
         <>
-            <Link to="/" style={{ marginRight: "1rem" }}>
-                Home
-            </Link>
-            <Link to="/favorites">Favorites</Link>
-
+            <NavBar />
             <FavoritesProvider>
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -1,3 +1,4 @@
+import Heading from "./Heading";
 import MovieCard from "./MovieCard";
 
 const MoviesContainer = ({ movies, emptyMessage }) => {
@@ -8,7 +9,7 @@ const MoviesContainer = ({ movies, emptyMessage }) => {
             })}
         </div>
     ) : (
-        <h1 className="text-4xl font-bold text-center">{emptyMessage}</h1>
+        <Heading className="text-center">{emptyMessage}</Heading>
     );
 };
 
