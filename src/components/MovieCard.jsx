@@ -1,102 +1,45 @@
-import { Card, CardBody, Image, Stack, Heading, Text } from "@chakra-ui/react";
-import { useFavorites } from "../context/FavoritesContext";
+import FavoriteButton from "./FavoriteButton";
 
-const MovieCard = ({ movie: { imdbID, Title, Year, Poster, Type } }) => {
-    const { favorites, addFavorite, removeFavorite } = useFavorites();
+const MovieCard = ({ movie }) => {
+    const { imdbID, Title, Year, Poster, Type } = movie;
 
     let typeColor;
     switch (Type) {
-        case "movie":
-            typeColor = "#E74C3C";
-            break;
-
         case "series":
-            typeColor = "#A6378F";
+            typeColor = "bg-[#A6378F]";
             break;
 
         case "game":
-            typeColor = "#CF445B";
+            typeColor = "bg-[#CF445B]";
             break;
 
         default:
-            typeColor = "#CF445B";
+            typeColor = "bg-[#E74C3C]";
             break;
     }
 
     return (
-        <>
-            <Card
-                w={"300px"}
-                minH={"500px"}
-                bgColor={"#1B1B1B"}
-                overflow={"hidden"}
-                transition={"250ms"}
-                _hover={{
-                    boxShadow: "0 5px 20px #DD484A80",
-                    transform: "scale(1.025)",
-                }}
-            >
-                <Stack>
-                    <Image
-                        src={
-                            Poster !== "N/A"
-                                ? Poster
-                                : "https://via.placeholder.com/400"
-                        }
-                        boxSize={"100%"}
-                        objectFit={"cover"}
-                        h={"300px"}
-                        alt={`${Title} - poster`}
-                    />
-                    <CardBody>
-                        <Stack spacing={3}>
-                            <Heading as={"h2"} size={"md"}>
-                                {Title}
-                            </Heading>
+        <div className="relative w-[300px] min-h-[500px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
+            <img
+                className="w-full h-[300px] object-cover"
+                src={
+                    Poster !== "N/A"
+                        ? Poster
+                        : "https://via.placeholder.com/400"
+                }
+            />
 
-                            <Text color={"gray.400"}>{Year}</Text>
-
-                            <Text
-                                as={"b"}
-                                fontSize={"sm"}
-                                bgColor={typeColor}
-                                w={"fit-content"}
-                                p={1.5}
-                                pt={1}
-                                borderRadius={"md"}
-                            >
-                                {Type}
-                            </Text>
-                            {favorites.some(
-                                (item) => item.imdbID === imdbID
-                            ) ? (
-                                <button
-                                    type="button"
-                                    onClick={() => removeFavorite(imdbID)}
-                                >
-                                    Remover
-                                </button>
-                            ) : (
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        addFavorite({
-                                            imdbID,
-                                            Title,
-                                            Year,
-                                            Poster,
-                                            Type,
-                                        })
-                                    }
-                                >
-                                    Adicionar
-                                </button>
-                            )}
-                        </Stack>
-                    </CardBody>
-                </Stack>
-            </Card>
-        </>
+            <div className="p-5">
+                <h2 className="text-xl font-bold">{Title}</h2>
+                <p className="text-gray-400 mt-3">{Year}</p>
+                <p
+                    className={`${typeColor} w-fit text-sm font-bold rounded-md mt-4 p-2 pt-1`}
+                >
+                    {Type}
+                </p>
+            </div>
+            <FavoriteButton movie={movie} />
+        </div>
     );
 };
 

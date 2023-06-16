@@ -1,21 +1,11 @@
-import { Center, Heading } from "@chakra-ui/react";
-
 const MainTitle = ({ children }) => {
-  return (
-    <Center>
-      <Heading
-        as={"h1"}
-        size={"3xl"}
-        bgGradient={"linear(to-r, #EC4D37 20%, #7928CA)"}
-        bgClip={"text"}
-        textTransform={"uppercase"}
-        p={10}
-        mt={[1, 10]}
-      >
-        {children}
-      </Heading>
-    </Center>
-  );
+    return (
+        <div className="flex justify-center items-center mt-10">
+            <h1 className="text-5xl md:text-6xl uppercase font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#ec5d37] from-20% to-[#8d2eb0] p-10">
+                {children}
+            </h1>
+        </div>
+    );
 };
 
 export default MainTitle;

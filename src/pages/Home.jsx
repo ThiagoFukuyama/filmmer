@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Heading, Center } from "@chakra-ui/react";
 import useDebounce from "../hooks/useDebounce";
+import Container from "../components/Container";
 import SearchBar from "../components/SearchBar";
 import MoviesContainer from "../components/MoviesContainer";
 import MainTitle from "../components/MainTitle";
@@ -45,22 +45,21 @@ const Home = () => {
     };
 
     return (
-        <>
+        <Container>
             <MainTitle>Filmmer</MainTitle>
             <SearchBar value={searchQuery} onChange={handleOnChange} />
 
             {isLoading && <LoadingScreen />}
 
-            <Center maxW={"container.2xl"} mt={10} p={10}>
-                {error ? (
-                    <Heading>
-                        Sorry, something went wrong. Please try again later.
-                    </Heading>
-                ) : (
-                    <MoviesContainer movies={movies} />
-                )}
-            </Center>
-        </>
+            {error ? (
+                <h1>Sorry, something went wrong. Please try again later.</h1>
+            ) : (
+                <MoviesContainer
+                    movies={movies}
+                    emptyMessage={"No results found"}
+                />
+            )}
+        </Container>
     );
 };
 

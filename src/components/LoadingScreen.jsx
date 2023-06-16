@@ -1,13 +1,13 @@
-import { Spinner, Center } from "@chakra-ui/react";
+import { LuLoader2 } from "react-icons/lu";
 
 const LoadingScreen = () => {
-  return (
-    <>
-      <Center h={"100vh"} position={"absolute"} inset={0} bgColor={"#121212"}>
-        <Spinner color="#EC4D37" size={"lg"} />
-      </Center>
-    </>
-  );
+    return (
+        <div className="bg-dark-gray-100 min-h-screen absolute inset-0 flex justify-center items-center z-10">
+            <span className="animate-spin">
+                <LuLoader2 color="#DD4849" size={40} />
+            </span>
+        </div>
+    );
 };
 
 export default LoadingScreen;
