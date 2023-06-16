@@ -1,7 +1,7 @@
 import FavoriteButton from "./FavoriteButton";
 
 const MovieCard = ({ movie }) => {
-    const { imdbID, Title, Year, Poster, Type } = movie;
+    const { Title, Year, Poster, Type } = movie;
 
     let typeColor;
     switch (Type) {
