@@ -4,12 +4,12 @@
         <img alt="Filmmer" width="400" src="https://github.com/ThiagoFukuyama/filmmer/assets/99801948/57c07bab-9f6c-4db8-9b09-4e0690545077">
     </a>
     <br>
-    <p><i>Aplicação simples de busca de filmes, séries e jogos</i></p>
+    <p><i>Aplicação web de busca de filmes, séries e jogos</i></p>
 </div>
 
 # Sobre
 
-Aplicação web que realiza busca por mídias de entretenimento consumindo a versão gratuita da [OMDb API](https://www.omdbapi.com/), com recurso de favoritos. Projeto construído com [React](https://react.dev/) e [Tailwind CSS](https://tailwindcss.com/) e configurado com [Vite](https://vitejs.dev/).
+Aplicação que permite a realização de buscas por mídias de entretenimento consumindo a versão gratuita da [OMDb API](https://www.omdbapi.com/), com recurso de favoritos. Projeto construído com [React](https://react.dev/) e [Tailwind CSS](https://tailwindcss.com/) e configurado com [Vite](https://vitejs.dev/).
 
 **_Disponível em_** [https://filmmer.pages.dev](https://filmmer.pages.dev)
 
