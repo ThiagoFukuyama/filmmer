@@ -10,10 +10,7 @@ const Favorites = () => {
     return (
         <Container>
             <Heading className="text-center mt-10 mb-14">
-                <IoHeart
-                    color="#DD4849"
-                    style={{ display: "inline-block", marginBottom: "0.5rem" }}
-                />{" "}
+                <IoHeart className="inline-block mr-2.5 mb-2" color="#DD4849" />
                 My Favorites
             </Heading>
             <MoviesContainer
