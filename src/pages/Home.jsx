@@ -49,16 +49,20 @@ const Home = () => {
             <MainTitle>Filmmer</MainTitle>
             <SearchBar value={searchQuery} onChange={handleOnChange} />
 
-            {isLoading && <LoadingScreen />}
+            <div className="relative">
+                {isLoading && <LoadingScreen />}
 
-            {error ? (
-                <h1>Sorry, something went wrong. Please try again later.</h1>
-            ) : (
-                <MoviesContainer
-                    movies={movies}
-                    emptyMessage={"No results found"}
-                />
-            )}
+                {error ? (
+                    <h1 className="text-4xl font-bold text-center">
+                        Sorry, something went wrong. Please try again later.
+                    </h1>
+                ) : (
+                    <MoviesContainer
+                        movies={movies}
+                        emptyMessage={"No results found"}
+                    />
+                )}
+            </div>
         </Container>
     );
 };
