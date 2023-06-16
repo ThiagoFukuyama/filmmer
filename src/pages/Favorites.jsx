@@ -10,7 +10,7 @@ const Favorites = () => {
         <Container>
             <h1 className="text-4xl text-center font-bold mt-10 mb-14">
                 <AiFillStar
-                    color="#fcfc19"
+                    color="#fafa48"
                     style={{ display: "inline-block", marginBottom: "0.5rem" }}
                 />{" "}
                 My Favorites

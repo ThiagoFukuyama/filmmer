@@ -51,18 +51,14 @@ const Home = () => {
 
             {isLoading && <LoadingScreen />}
 
-            <div>
-                {error ? (
-                    <h1>
-                        Sorry, something went wrong. Please try again later.
-                    </h1>
-                ) : (
-                    <MoviesContainer
-                        movies={movies}
-                        emptyMessage={"No results found"}
-                    />
-                )}
-            </div>
+            {error ? (
+                <h1>Sorry, something went wrong. Please try again later.</h1>
+            ) : (
+                <MoviesContainer
+                    movies={movies}
+                    emptyMessage={"No results found"}
+                />
+            )}
         </Container>
     );
 };
