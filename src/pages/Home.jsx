@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
+import Container from "../components/Container";
 import SearchBar from "../components/SearchBar";
 import MoviesContainer from "../components/MoviesContainer";
 import MainTitle from "../components/MainTitle";
@@ -44,7 +45,7 @@ const Home = () => {
     };
 
     return (
-        <>
+        <Container>
             <MainTitle>Filmmer</MainTitle>
             <SearchBar value={searchQuery} onChange={handleOnChange} />
 
@@ -56,10 +57,13 @@ const Home = () => {
                         Sorry, something went wrong. Please try again later.
                     </h1>
                 ) : (
-                    <MoviesContainer movies={movies} />
+                    <MoviesContainer
+                        movies={movies}
+                        emptyMessage={"No results found"}
+                    />
                 )}
             </div>
-        </>
+        </Container>
     );
 };
 
