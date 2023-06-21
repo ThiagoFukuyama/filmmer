@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
-import useDebounce from "../hooks/useDebounce";
-import Container from "../components/Container";
+import { useDebounce } from "../hooks/useDebounce";
 import Heading from "../components/Heading";
-import SearchBar from "../components/SearchBar";
-import MoviesContainer from "../components/MoviesContainer";
+import Container from "../components/Container";
 import MainTitle from "../components/MainTitle";
+import SearchBar from "../components/SearchBar";
 import LoadingScreen from "../components/LoadingScreen";
+import MoviesContainer from "../components/MoviesContainer";
 
 const Home = () => {
     const [movies, setMovies] = useState([]);

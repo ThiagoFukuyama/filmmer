@@ -1,8 +1,8 @@
-import { IoHeart } from "react-icons/io5";
-import Container from "../components/Container";
-import Heading from "../components/Heading";
-import MoviesContainer from "../components/MoviesContainer";
 import { useFavorites } from "../context/FavoritesContext";
+import { IoHeart } from "react-icons/io5";
+import Heading from "../components/Heading";
+import Container from "../components/Container";
+import MoviesContainer from "../components/MoviesContainer";
 
 const Favorites = () => {
     const { favorites } = useFavorites();

@@ -1,4 +1,4 @@
-export default function useDebounce(cb, delay = 500) {
+export const useDebounce = (cb, delay = 500) => {
     let timeout;
     return (...args) => {
         clearTimeout(timeout);
@@ -6,4 +6,4 @@ export default function useDebounce(cb, delay = 500) {
             cb(...args);
         }, delay);
     };
-}
+};
