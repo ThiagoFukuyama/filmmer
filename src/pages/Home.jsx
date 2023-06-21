@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import useDebounce from "../hooks/useDebounce";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
@@ -17,26 +17,18 @@ const Home = () => {
         searchMovie();
     }, []);
 
-    const searchMovie = useCallback(async (title = "") => {
-        try {
-            const response = await fetch(
-                `https://www.omdbapi.com?apikey=5dfc069&s=${title || "Sword"}`
-            );
-            if (!response.ok) {
-                throw new Error();
-            }
-            const data = await response.json();
-            setMovies(data.Search);
-        } catch (e) {
-            setError(true);
-        } finally {
-            setIsLoading(false);
-        }
-    }, []);
+    const searchMovie = (title = "") => {
+        fetch(`https://www.omdbapi.com?apikey=5dfc069&s=${title || "Sword"}`)
+            .then((response) => {
+                if (!response.ok) throw new Error();
+                return response.json();
+            })
+            .then((data) => setMovies(data.Search))
+            .catch(() => setError(true))
+            .finally(() => setIsLoading(false));
+    };
 
-    const debouncedSearchMovie = useMemo(() => {
-        return useDebounce(searchMovie);
-    }, [searchMovie]);
+    const debouncedSearchMovie = useCallback(useDebounce(searchMovie), []);
 
     const handleOnChange = (e) => {
         setSearchQuery(e.target.value);
