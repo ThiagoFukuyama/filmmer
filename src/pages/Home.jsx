@@ -30,9 +30,9 @@ const Home = () => {
 
     const debouncedSearchMovie = useMemo(() => useDebounce(searchMovie), []);
 
-    const handleOnChange = (e) => {
-        setSearchQuery(e.target.value);
-        debouncedSearchMovie(e.target.value);
+    const handleOnChange = ({ target: { value } }) => {
+        setSearchQuery(value);
+        debouncedSearchMovie(value.trim());
     };
 
     return (
