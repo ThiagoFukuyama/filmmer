@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useDebounce } from "../hooks/useDebounce";
 import Heading from "../components/Heading";
 import Container from "../components/Container";
@@ -28,7 +28,7 @@ const Home = () => {
             .finally(() => setIsLoading(false));
     };
 
-    const debouncedSearchMovie = useCallback(useDebounce(searchMovie), []);
+    const debouncedSearchMovie = useMemo(() => useDebounce(searchMovie), []);
 
     const handleOnChange = (e) => {
         setSearchQuery(e.target.value);
