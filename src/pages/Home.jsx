@@ -18,11 +18,9 @@ const Home = () => {
     }, []);
 
     const searchMovie = useCallback(async (title = "") => {
-        const DEFAULT_SEARCH_QUERY = "Sword";
-        const search = title || DEFAULT_SEARCH_QUERY;
         try {
             const response = await fetch(
-                `https://www.omdbapi.com?apikey=5dfc069&s=${search}`
+                `https://www.omdbapi.com?apikey=5dfc069&s=${title || "Sword"}`
             );
             if (!response.ok) {
                 throw new Error();
