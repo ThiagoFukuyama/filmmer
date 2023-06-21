@@ -30,13 +30,13 @@ const MovieCard = ({ movie }) => {
             />
 
             <div className="p-5">
-                <h2 className="text-xl font-bold">{Title}</h2>
-                <p className="text-gray-400 mt-3">{Year}</p>
-                <p
-                    className={`${typeColor} w-fit text-sm font-bold rounded-md mt-4 p-2 pt-1`}
+                <h2 className="text-xl font-bold mb-3">{Title}</h2>
+                <p className="text-gray-400 mb-4">{Year}</p>
+                <span
+                    className={`${typeColor} text-sm font-bold rounded-md p-2 pt-1`}
                 >
                     {Type}
-                </p>
+                </span>
             </div>
             <FavoriteButton movie={movie} />
         </div>
