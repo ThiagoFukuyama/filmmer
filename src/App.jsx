@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
@@ -11,6 +11,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/favorites" element={<Favorites />} />
+                <Route path="*" element={<Navigate to="/" />} />
             </Routes>
         </FavoritesProvider>
     );
