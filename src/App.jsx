@@ -6,15 +6,13 @@ import FavoritesProvider from "./context/FavoritesContext";
 
 const App = () => {
     return (
-        <>
+        <FavoritesProvider>
             <NavBar />
-            <FavoritesProvider>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/favorites" element={<Favorites />} />
-                </Routes>
-            </FavoritesProvider>
-        </>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/favorites" element={<Favorites />} />
+            </Routes>
+        </FavoritesProvider>
     );
 };
 
