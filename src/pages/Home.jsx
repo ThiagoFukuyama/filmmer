@@ -13,10 +13,6 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(false);
 
-    useEffect(() => {
-        searchMovie();
-    }, []);
-
     const searchMovie = (title = "") => {
         fetch(`https://www.omdbapi.com?apikey=5dfc069&s=${title || "Sword"}`)
             .then((response) => {
@@ -29,6 +25,12 @@ const Home = () => {
     };
 
     const debouncedSearchMovie = useMemo(() => useDebounce(searchMovie), []);
+
+    useEffect(() => {
+        searchMovie();
+        return () => debouncedSearchMovie.cancel();
+        /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
+    }, []);
 
     const handleOnChange = ({ target: { value } }) => {
         setSearchQuery(value);
