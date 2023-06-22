@@ -39,10 +39,8 @@ const Home = () => {
         <Container>
             <MainTitle>Filmmer</MainTitle>
             <SearchBar value={searchQuery} onChange={handleOnChange} />
-
             <div className="relative">
                 {isLoading && <LoadingScreen />}
-
                 {error ? (
                     <Heading className="text-center">
                         Sorry, something went wrong. Please try again later.

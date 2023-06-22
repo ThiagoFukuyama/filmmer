@@ -23,7 +23,6 @@ const MovieCard = ({ movie }) => {
                 src={Poster !== "N/A" ? Poster : PLACEHOLDER_IMAGE_URL}
                 onError={(e) => (e.target.src = PLACEHOLDER_IMAGE_URL)}
             />
-
             <div className="p-5">
                 <h2 className="text-xl font-bold mb-3">{Title}</h2>
                 <p className="text-gray-400 mb-4">{Year}</p>
