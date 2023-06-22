@@ -1,5 +1,6 @@
 {
   "name": "filmmer",
+  "description": "Aplicação web de busca de filmes, séries e jogos",
   "private": true,
   "version": "0.0.0",
   "type": "module",
