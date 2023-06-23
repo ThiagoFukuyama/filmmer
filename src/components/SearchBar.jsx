@@ -33,6 +33,7 @@ const SearchBar = ({ onChange: search }) => {
                     onClick={handleClick}
                     className="absolute right-5 bottom-1/3"
                 >
+                    <span className="sr-only">Clear input</span>
                     <AiOutlineClose size={18} color="#DD4849" />
                 </button>
             )}
