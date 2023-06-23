@@ -21,6 +21,7 @@ const SearchBar = ({ onChange: search }) => {
                 size={28}
                 color="#DD4849"
             />
+
             <input
                 className="w-full bg-transparent outline-none pl-10 pr-8 py-3 placeholder:opacity-40"
                 type="text"
@@ -28,6 +29,7 @@ const SearchBar = ({ onChange: search }) => {
                 value={searchQuery}
                 onChange={handleOnChange}
             />
+
             {searchQuery !== "" && (
                 <button
                     onClick={handleClick}

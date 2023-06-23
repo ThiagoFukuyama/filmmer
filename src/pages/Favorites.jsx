@@ -17,6 +17,7 @@ const Favorites = () => {
                     />
                     My Favorites
                 </Heading>
+
                 <MoviesContainer
                     movies={favorites}
                     emptyMessage={"No favorites yet"}

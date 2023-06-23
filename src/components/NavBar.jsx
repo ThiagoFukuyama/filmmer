@@ -16,6 +16,7 @@ const NavBar = () => {
                         Search
                     </NavLink>
                 </li>
+
                 <li>
                     <NavLink to="/favorites">
                         <IoHeart color="#DD4849" size={20} className="inline" />
