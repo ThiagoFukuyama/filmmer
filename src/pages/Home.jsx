@@ -21,7 +21,7 @@ const Home = () => {
         <main>
             <Container>
                 <MainTitle>Filmmer</MainTitle>
-                <SearchBar searchMovie={debouncedSearchMovie} />
+                <SearchBar onChange={debouncedSearchMovie} />
                 <div className="relative">
                     {isLoading && <LoadingScreen />}
                     {error ? (

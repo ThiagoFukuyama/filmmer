@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const SearchBar = ({ searchMovie }) => {
+const SearchBar = ({ onChange }) => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleOnChange = ({ target: { value } }) => {
         setSearchQuery(value);
-        searchMovie(value.trim());
+        onChange(value.trim());
     };
 
     return (
