@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useMovies } from "../hooks/useMovies";
 import Heading from "../components/Heading";
 import Container from "../components/Container";
@@ -8,7 +8,6 @@ import LoadingScreen from "../components/LoadingScreen";
 import MoviesContainer from "../components/MoviesContainer";
 
 const Home = () => {
-    const [searchQuery, setSearchQuery] = useState("");
     const { movies, isLoading, error, searchMovie, debouncedSearchMovie } =
         useMovies();
 
@@ -18,15 +17,10 @@ const Home = () => {
         /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
     }, []);
 
-    const handleOnChange = ({ target: { value } }) => {
-        setSearchQuery(value);
-        debouncedSearchMovie(value.trim());
-    };
-
     return (
         <Container>
             <MainTitle>Filmmer</MainTitle>
-            <SearchBar value={searchQuery} onChange={handleOnChange} />
+            <SearchBar searchMovie={debouncedSearchMovie} />
             <div className="relative">
                 {isLoading && <LoadingScreen />}
                 {error ? (
