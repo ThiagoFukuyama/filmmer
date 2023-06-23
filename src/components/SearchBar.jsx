@@ -31,7 +31,7 @@ const SearchBar = ({ onChange: search }) => {
             {searchQuery !== "" && (
                 <button
                     onClick={handleClick}
-                    className="absolute right-5 bottom-1/3"
+                    className="absolute right-5 bottom-1/4 p-1 z-10"
                 >
                     <span className="sr-only">Clear search box</span>
                     <AiOutlineClose size={18} color="#DD4849" />
