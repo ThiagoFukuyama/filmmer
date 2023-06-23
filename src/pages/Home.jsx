@@ -18,23 +18,25 @@ const Home = () => {
     }, []);
 
     return (
-        <Container>
-            <MainTitle>Filmmer</MainTitle>
-            <SearchBar searchMovie={debouncedSearchMovie} />
-            <div className="relative">
-                {isLoading && <LoadingScreen />}
-                {error ? (
-                    <Heading className="text-center">
-                        Sorry, something went wrong. Please try again later.
-                    </Heading>
-                ) : (
-                    <MoviesContainer
-                        movies={movies}
-                        emptyMessage={"No results found"}
-                    />
-                )}
-            </div>
-        </Container>
+        <main>
+            <Container>
+                <MainTitle>Filmmer</MainTitle>
+                <SearchBar searchMovie={debouncedSearchMovie} />
+                <div className="relative">
+                    {isLoading && <LoadingScreen />}
+                    {error ? (
+                        <Heading className="text-center">
+                            Sorry, something went wrong. Please try again later.
+                        </Heading>
+                    ) : (
+                        <MoviesContainer
+                            movies={movies}
+                            emptyMessage={"No results found"}
+                        />
+                    )}
+                </div>
+            </Container>
+        </main>
     );
 };
 
