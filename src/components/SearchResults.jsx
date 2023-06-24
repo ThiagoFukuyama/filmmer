@@ -1,6 +1,6 @@
-import LoadingScreen from "./LoadingScreen";
-import MoviesContainer from "./MoviesContainer";
-import { Heading } from "./shared";
+import LoadingScreen from "components/LoadingScreen";
+import MoviesContainer from "components/MoviesContainer";
+import { Heading } from "components/shared";
 
 const SearchResults = ({ movies, isLoading, error }) => {
     return (

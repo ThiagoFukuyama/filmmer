@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useDebounce } from "../hooks/useDebounce";
+import { useDebounce } from "hooks/useDebounce";
 
 export const useMovies = () => {
     const [movies, setMovies] = useState(null);

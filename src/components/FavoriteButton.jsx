@@ -1,5 +1,5 @@
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import { useFavorites } from "../context/FavoritesContext";
+import { useFavorites } from "context/FavoritesContext";
 
 const FavoriteButton = ({ movie }) => {
     const { favorites, addFavorite, removeFavorite } = useFavorites();

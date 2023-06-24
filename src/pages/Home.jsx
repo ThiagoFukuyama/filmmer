@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import MainTitle from "../components/MainTitle";
-import SearchBar from "../components/SearchBar";
-import SearchResults from "../components/SearchResults";
-import { Container } from "../components/shared";
-import { useMovies } from "../hooks/useMovies";
+import MainTitle from "components/MainTitle";
+import SearchBar from "components/SearchBar";
+import SearchResults from "components/SearchResults";
+import { Container } from "components/shared";
+import { useMovies } from "hooks/useMovies";
 
 const Home = () => {
     const { movies, isLoading, error, searchMovie, debouncedSearchMovie } =

@@ -1,5 +1,5 @@
-import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "../data/constants";
-import FavoriteButton from "./FavoriteButton";
+import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "data/constants";
+import FavoriteButton from "components/FavoriteButton";
 
 const MovieCard = ({ movie }) => {
     const { Title, Year, Poster, Type } = movie;

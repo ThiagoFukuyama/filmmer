@@ -1,5 +1,5 @@
-import { Heading } from "./shared";
-import MovieCard from "./MovieCard";
+import { Heading } from "components/shared";
+import MovieCard from "components/MovieCard";
 
 const MoviesContainer = ({ movies, emptyMessage }) => {
     if (movies?.length > 0)
