@@ -8,7 +8,7 @@ const SearchResults = ({ movies, isLoading, error }) => {
             {isLoading && <LoadingScreen />}
 
             {error ? (
-                <Heading className="text-center">
+                <Heading as="h2" className="text-center">
                     Sorry, something went wrong. Please try again later.
                 </Heading>
             ) : (
