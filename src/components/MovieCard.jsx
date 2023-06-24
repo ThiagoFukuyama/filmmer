@@ -1,23 +1,12 @@
+import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "../data/constants";
 import FavoriteButton from "./FavoriteButton";
 
 const MovieCard = ({ movie }) => {
     const { Title, Year, Poster, Type } = movie;
-    const PLACEHOLDER_IMAGE_URL = "https://via.placeholder.com/400";
-    let typeColor;
-    switch (Type) {
-        case "series":
-            typeColor = "bg-[#A6378F]";
-            break;
-        case "game":
-            typeColor = "bg-[#CF445B]";
-            break;
-        default:
-            typeColor = "bg-[#E74C3C]";
-            break;
-    }
+    const typeColor = TYPE_COLORS[Type] || "bg-movie";
 
     return (
-        <div className="relative w-[300px] min-h-[500px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
+        <div className="relative w-[300px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
             <img
                 className="w-full h-[300px] object-cover"
                 src={Poster !== "N/A" ? Poster : PLACEHOLDER_IMAGE_URL}
