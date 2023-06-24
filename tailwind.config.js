@@ -12,6 +12,10 @@ export default {
                 series: "#A6378F",
                 game: "#CF445B",
             },
+            backgroundImage: {
+                "filmmer-gradient":
+                    "linear-gradient(to right, #EC5D37 20%, #8D2EB0)",
+            },
         },
     },
     plugins: [],
