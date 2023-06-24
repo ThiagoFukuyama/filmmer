@@ -11,8 +11,11 @@ const Home = () => {
 
     useEffect(() => {
         searchMovie();
-        return () => debouncedSearchMovie.cancel();
-        /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
+        return () => {
+            debouncedSearchMovie.cancel();
+            if (import.meta.env.PROD) searchMovie.abort();
+            /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
+        };
     }, []);
 
     return (
