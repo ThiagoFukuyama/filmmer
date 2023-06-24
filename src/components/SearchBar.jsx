@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 
 const SearchBar = ({ onChange: search }) => {
     const [searchQuery, setSearchQuery] = useState("");

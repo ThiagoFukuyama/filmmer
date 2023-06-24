@@ -1,4 +1,4 @@
-import Heading from "./Heading";
+import { Heading } from "./shared";
 import MovieCard from "./MovieCard";
 
 const MoviesContainer = ({ movies, emptyMessage }) => {

@@ -1,8 +1,8 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favorites";
 import FavoritesProvider from "./context/FavoritesContext";
+import Favorites from "./pages/Favorites";
+import Home from "./pages/Home";
 
 const App = () => {
     return (
