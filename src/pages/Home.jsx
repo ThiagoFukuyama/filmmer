@@ -1,11 +1,9 @@
 import { useEffect } from "react";
 import { useMovies } from "../hooks/useMovies";
-import Heading from "../components/Heading";
 import Container from "../components/Container";
 import MainTitle from "../components/MainTitle";
 import SearchBar from "../components/SearchBar";
-import LoadingScreen from "../components/LoadingScreen";
-import MoviesContainer from "../components/MoviesContainer";
+import SearchResults from "../components/SearchResults";
 
 const Home = () => {
     const { movies, isLoading, error, searchMovie, debouncedSearchMovie } =
@@ -22,20 +20,11 @@ const Home = () => {
             <Container>
                 <MainTitle>Filmmer</MainTitle>
                 <SearchBar onChange={debouncedSearchMovie} />
-
-                <div className="relative">
-                    {isLoading && <LoadingScreen />}
-                    {error ? (
-                        <Heading className="text-center">
-                            Sorry, something went wrong. Please try again later.
-                        </Heading>
-                    ) : (
-                        <MoviesContainer
-                            movies={movies}
-                            emptyMessage={"No results found"}
-                        />
-                    )}
-                </div>
+                <SearchResults
+                    movies={movies}
+                    isLoading={isLoading}
+                    error={error}
+                />
             </Container>
         </main>
     );
