@@ -6,7 +6,7 @@ const MovieCard = ({ movie }) => {
     const typeColor = MEDIA_TYPE_COLORS[Type] || "bg-movie";
 
     return (
-        <div className="relative w-[300px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
+        <div className="relative w-[300px] min-h-[500px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
             <img
                 className="w-full h-[300px] object-cover"
                 src={Poster !== "N/A" ? Poster : PLACEHOLDER_IMAGE_URL}
