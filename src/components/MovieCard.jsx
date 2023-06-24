@@ -1,9 +1,9 @@
-import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "data/constants";
-import FavoriteButton from "components/FavoriteButton";
+import { MEDIA_TYPE_COLORS, PLACEHOLDER_IMAGE_URL } from "../data/constants";
+import FavoriteToggle from "./favoriteToggle/FavoriteToggle";
 
 const MovieCard = ({ movie }) => {
     const { Title, Year, Poster, Type } = movie;
-    const typeColor = TYPE_COLORS[Type] || "bg-movie";
+    const typeColor = MEDIA_TYPE_COLORS[Type] || "bg-movie";
 
     return (
         <div className="relative w-[300px] bg-dark-gray-100 rounded-md overflow-hidden transition duration-300 hover:scale-[1.025]">
@@ -23,7 +23,7 @@ const MovieCard = ({ movie }) => {
                 </span>
             </div>
 
-            <FavoriteButton movie={movie} />
+            <FavoriteToggle movie={movie} />
         </div>
     );
 };
