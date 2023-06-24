@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 
 const SearchBar = ({ onChange: search }) => {
     const [searchQuery, setSearchQuery] = useState("");
+    const inputRef = useRef();
 
     const handleOnChange = ({ target: { value } }) => {
         setSearchQuery(value);
@@ -12,6 +13,7 @@ const SearchBar = ({ onChange: search }) => {
     const handleClick = () => {
         setSearchQuery("");
         search("");
+        inputRef.current.focus();
     };
 
     return (
@@ -26,6 +28,7 @@ const SearchBar = ({ onChange: search }) => {
                 className="w-full bg-transparent outline-none pl-10 pr-8 py-3 placeholder:opacity-40"
                 type="text"
                 placeholder="Search for movies, series and games..."
+                ref={inputRef}
                 value={searchQuery}
                 onChange={handleOnChange}
             />
