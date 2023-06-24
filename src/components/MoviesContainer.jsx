@@ -11,7 +11,11 @@ const MoviesContainer = ({ movies, emptyMessage }) => {
             </div>
         );
 
-    return <Heading className="text-center">{emptyMessage}</Heading>;
+    return (
+        <Heading as="h2" className="text-center">
+            {emptyMessage}
+        </Heading>
+    );
 };
 
 export default MoviesContainer;

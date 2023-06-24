@@ -1,8 +1,10 @@
-const Heading = ({ children, className = "" }) => {
+const Heading = ({ children, as = "h1", className = "" }) => {
+    const Tag = as || "h1";
+
     return (
-        <h1 className={`${className} text-3xl md:text-4xl font-bold`}>
+        <Tag className={`${className} text-3xl md:text-4xl font-bold`}>
             {children}
-        </h1>
+        </Tag>
     );
 };
 
