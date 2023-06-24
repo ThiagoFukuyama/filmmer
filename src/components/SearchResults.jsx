@@ -14,7 +14,7 @@ const SearchResults = ({ movies, isLoading, error }) => {
             ) : (
                 <MoviesContainer
                     movies={movies}
-                    emptyMessage={"No results found"}
+                    emptyMessage="No results found"
                 />
             )}
         </div>

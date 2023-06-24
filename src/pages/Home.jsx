@@ -6,14 +6,19 @@ import { Container } from "../components/shared";
 import { useMovies } from "../hooks/useMovies";
 
 const Home = () => {
-    const { movies, isLoading, error, searchMovie, debouncedSearchMovie } =
-        useMovies();
+    const {
+        movies,
+        isLoading,
+        error,
+        movieSearch: { search, debouncedSearch, abortRequest },
+    } = useMovies();
 
     useEffect(() => {
-        searchMovie();
+        search();
+
         return () => {
-            debouncedSearchMovie.cancel();
-            if (import.meta.env.PROD) searchMovie.abort();
+            debouncedSearch.cancel();
+            if (import.meta.env.PROD) abortRequest();
             /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
         };
     }, []);
@@ -22,7 +27,7 @@ const Home = () => {
         <main>
             <Container>
                 <MainTitle>Filmmer</MainTitle>
-                <SearchBar onChange={debouncedSearchMovie} />
+                <SearchBar onChange={debouncedSearch} />
                 <SearchResults
                     movies={movies}
                     isLoading={isLoading}
