@@ -1,5 +1,5 @@
-import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "../data/constants";
-import FavoriteToggle from "./toggleFavorite/FavoriteToggle";
+import { PLACEHOLDER_IMAGE_URL, TYPE_COLORS } from "data/constants";
+import FavoriteButton from "components/FavoriteButton";
 
 const MovieCard = ({ movie }) => {
     const { Title, Year, Poster, Type } = movie;
@@ -23,7 +23,7 @@ const MovieCard = ({ movie }) => {
                 </span>
             </div>
 
-            <FavoriteToggle movie={movie} />
+            <FavoriteButton movie={movie} />
         </div>
     );
 };
