@@ -17,7 +17,7 @@ const SearchBar = ({ onChange: search }) => {
     };
 
     return (
-        <div className="relative max-w-[660px] bg-dark-gray-100 focus-within:bg-dark-gray-200 border border-transparent focus-within:border-[#DD484990] text-lg shadow-2xl rounded-full mx-auto mb-20 px-3 transition duration-200">
+        <div className="flex justify-center items-center relative max-w-[660px] bg-dark-gray-100 focus-within:bg-dark-gray-200 border border-transparent focus-within:border-[#DD484990] text-lg shadow-2xl rounded-full mx-auto mb-20 px-3 transition duration-200">
             <AiOutlineSearch
                 className="absolute left-4 bottom-3 pointer-events-none"
                 size={28}
@@ -25,7 +25,7 @@ const SearchBar = ({ onChange: search }) => {
             />
 
             <input
-                className="w-full bg-transparent outline-none pl-10 pr-8 py-3 placeholder:opacity-40"
+                className="w-full bg-transparent outline-none pl-10 pr-2 py-3 placeholder:opacity-40"
                 type="text"
                 placeholder="Search for movies, series and games..."
                 ref={inputRef}
@@ -34,10 +34,7 @@ const SearchBar = ({ onChange: search }) => {
             />
 
             {searchQuery !== "" && (
-                <button
-                    onClick={handleClick}
-                    className="absolute right-5 bottom-1/4 p-1 z-10"
-                >
+                <button onClick={handleClick} className="p-1.5 z-10">
                     <span className="sr-only">Clear search box</span>
                     <AiOutlineClose size={18} color="#DD4849" />
                 </button>
