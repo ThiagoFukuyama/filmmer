@@ -1,18 +1,11 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { AiOutlineClose, AiOutlineSearch } from "react-icons/ai";
 
-const SearchBar = ({ onChange: search }) => {
-    const [searchQuery, setSearchQuery] = useState("");
+const SearchBar = ({ value, onChange, onButtonClick }) => {
     const inputRef = useRef();
 
-    const handleOnChange = ({ target: { value } }) => {
-        setSearchQuery(value);
-        search(value.trim());
-    };
-
-    const handleClick = () => {
-        setSearchQuery("");
-        search("");
+    const handleButtonClick = () => {
+        onButtonClick();
         inputRef.current.focus();
     };
 
@@ -24,17 +17,22 @@ const SearchBar = ({ onChange: search }) => {
                 color="#DD4849"
             />
 
+            <label className="sr-only" htmlFor="search">
+                Search for movies, series and games
+            </label>
             <input
                 className="w-full bg-transparent outline-none pl-10 pr-2 py-3 placeholder:opacity-40"
                 type="text"
+                id="search"
                 placeholder="Search for movies, series and games..."
                 ref={inputRef}
-                value={searchQuery}
-                onChange={handleOnChange}
+                value={value}
+                onChange={onChange}
+                autoComplete="off"
             />
 
-            {searchQuery !== "" && (
-                <button onClick={handleClick} className="p-1.5 z-10">
+            {value !== "" && (
+                <button onClick={handleButtonClick} className="p-1.5">
                     <span className="sr-only">Clear search box</span>
                     <AiOutlineClose size={18} color="#DD4849" />
                 </button>

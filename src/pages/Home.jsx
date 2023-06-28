@@ -1,35 +1,32 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import MainTitle from "../components/MainTitle";
 import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
 import { Container } from "../components/shared";
-import { useMovies } from "../hooks/useMovies";
+import { useDebounce, useFetch } from "../hooks";
 
 const Home = () => {
-    const {
-        movies,
-        isLoading,
-        error,
-        movieSearch: { search, debouncedSearch, abortRequest },
-    } = useMovies();
-
-    useEffect(() => {
-        search();
-
-        return () => {
-            debouncedSearch.cancel();
-            if (import.meta.env.PROD) abortRequest();
-            /* React Strict Mode parece afetar o uso do AbortController na cleanup do useEffect, em um projeto real melhor utilizar algo como React Query para lidar com isso */
-        };
-    }, []);
+    const [searchQuery, setSearchQuery] = useState("");
+    const debouncedSearchQuery = useDebounce(searchQuery);
+    const { data, isLoading, error } = useFetch(
+        `https://www.omdbapi.com?apikey=5dfc069&s=${
+            debouncedSearchQuery.trim() || "Sword"
+        }`
+    );
 
     return (
         <main>
             <Container>
                 <MainTitle>Filmmer</MainTitle>
-                <SearchBar onChange={debouncedSearch} />
+
+                <SearchBar
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onButtonClick={() => setSearchQuery("")}
+                />
+
                 <SearchResults
-                    movies={movies}
+                    movies={data?.Search}
                     isLoading={isLoading}
                     error={error}
                 />
